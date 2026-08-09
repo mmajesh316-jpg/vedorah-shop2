@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedorah | Nourish Life - Premium Moringa & Super Blends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0A1C14;
+            --emerald: #134E35;
+            --emerald-light: #1D7A54;
+            --gold: #D4AF37;
+            --gold-light: #F3E5AB;
+            --cream: #FAF9F6;
+            --white: #FFFFFF;
+            --gray-subtle: #F4F5F4;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--primary-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header / Navbar */
+        header {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-area img {
+            height: 45px;
+            width: 45px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+        }
+
+        .logo-area span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            letter-spacing: 1px;
+        }
+
+        .contact-badge {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--emerald) 100%);
+            color: var(--white);
+            padding: 5rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
+            color: #E2E8F0;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 4rem auto;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 2.5rem;
+        }
+
+        @media(max-width: 968px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2.2rem; }
+        }
+
+        /* Card Layout */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(10, 28, 20, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            color: var(--emerald);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gray-subtle);
+            padding-bottom: 0.75rem;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--emerald);
+        }
+
+        select, input[type="text"], textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #D1D5DB;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        select:focus, input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Health Focus Pills */
+        .pills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .health-pill {
+            background: var(--gray-subtle);
+            border: 1.5px solid #E5E7EB;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+            font-weight: 500;
+        }
+
+        .health-pill input {
+            display: none;
+        }
+
+        .health-pill.selected {
+            background: var(--emerald);
+            color: var(--white);
+            border-color: var(--gold);
+        }
+
+        /* Product Showcase Card */
+        .product-showcase img {
+            width: 100%;
+            border-radius: 12px;
+            height: 280px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--gray-subtle);
+        }
+
+        .price-tag {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* QR Code & Payment Instructions Box */
+        .payment-box {
+            background: var(--gray-subtle);
+            border: 1px dashed var(--gold);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: var(--white);
+            margin: 0 auto 1rem auto;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #666;
+            border-radius: 8px;
+        }
+
+        /* Submit Button */
+        .btn-order {
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+            color: var(--white);
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(19, 78, 53, 0.3);
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-order:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(19, 78, 53, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #E5E7EB;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="1000189209.png" alt="Vedorah Logo">
+            <span>VEDORAH</span>
+        </div>
+        <a href="https://wa.me/919019797103" class="contact-badge" target="_blank">💬 WhatsApp Support: 9019797103</a>
+    </header>
+
+    <section class="hero">
+        <h1>Transform Your Health Naturally</h1>
+        <p>100% Pure Moringa Powder & Targeted Super Blend Mixes formulated to boost natural immunity, balance blood pressure, and revitalize your body wellness.</p>
+    </section>
+
+    <div class="container">
+        <form id="orderForm" onsubmit="handleOrderSubmission(event)">
+            <div class="grid-layout">
+                
+                <!-- Left Column: Product & Health Customization -->
+                <div class="card">
+                    <h2>1. Select Your Formulation</h2>
+                    
+                    <div class="form-group">
+                        <label for="productSelect">Choose Blend Product</label>
+                        <select id="productSelect" onchange="updatePricing()">
+                            <option value="Pure Moringa Powder (200g) - ₹499">Pure Moringa Powder (200g) - ₹499</option>
+                            <option value="Super Blend Wellness Mix (250g) - ₹699" selected>Super Blend Wellness Mix (250g) - ₹699</option>
+                            <option value="Combo Pack (Moringa + Super Blend) - ₹1099">Combo Pack (Moringa + Super Blend) - ₹1099</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <label>Target Health Customization (Select all that apply for precise blending/guidance):</label>
+                        <div class="pills-container" id="healthPills">
+                            <div class="health-pill" onclick="togglePill(this)">High BP (Hypertension)<input type="checkbox" name="health" value="High BP"></div>
+                            <div class="health-pill" onclick="togglePill(this)">Low BP<input type="checkbox" name="health" value="Low BP"></div>
+                            <div class="health-pill" onclick="togglePill(this)">Hair Fall Control<input type="checkbox" name="health" value="Hair Fall"></div>
+                            <div class="health-pill" onclick="togglePill(this)">Stomach & Digestion<input type="checkbox" name="health" value="Stomach Issues"></div>
+                            <div class="health-pill" onclick="togglePill(this)">Neck & Joint Pain<input type="checkbox" name="health" value="Neck Pain"></div>
+                            <div class="health-pill" onclick="togglePill(this)">General Immunity Boost<input type="checkbox" name="health" value="Immunity Boost"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <div class="product-showcase">
+                            <img src="1000198369.png" alt="Pure Moringa Powder Package">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 0.85rem; color: #666; display: block;">Total Investment</span>
+                                <span class="price-tag" id="displayPrice">₹699</span>
+                            </div>
+                            <span style="font-size: 0.85rem; background: var(--gray-subtle); padding: 6px 12px; border-radius: 6px; font-weight: 600; color: var(--emerald);">100% Natural • Zero Chemicals</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Shipping & Payment Authentication -->
+                <div class="card">
+                    <h2>2. Customer & Payment Details</h2>
+
+                    <div class="form-group">
+                        <label for="custName">Full Name</label>
+                        <input type="text" id="custName" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="custPhone">WhatsApp Mobile Number</label>
+                        <input type="text" id="custPhone" required placeholder="e.g., 9876543210">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="custAddress">Complete Delivery Address with Pincode</label>
+                        <textarea id="custAddress" rows="3" required placeholder="House No, Street, Landmark, City, State, Pincode"></textarea>
+                    </div>
+
+                    <div class="payment-box">
+                        <h3 style="font-size: 1.1rem; color: var(--emerald); margin-bottom: 0.5rem;">Scan QR to Pay via UPI</h3>
+                        <p style="font-size: 0.8rem; color: #555; margin-bottom: 1rem;">Pay exact amount using GPay / PhonePe / Paytm to UPI ID: <strong>9019797103@upi</strong></p>
+                        
+                        <!-- Replace src with your exact QR Code Image File if available -->
+                        <div class="qr-placeholder" style="border: 2px solid var(--gold); background: #fff;">
+                            <span style="font-weight: 700; color: var(--emerald);">[ INSERT YOUR<br>QR CODE HERE ]</span>
+                        </div>
+
+                        <div class="form-group" style="text-align: left; margin-top: 1rem;">
+                            <label for="paymentRef">UPI Transaction / Reference ID</label>
+                            <input type="text" id="paymentRef" required placeholder="Enter 12-digit UPI Transaction Ref ID">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-order">
+                        Complete Order & Send to WhatsApp 🚀
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Vedorah Nourish Life. All Rights Reserved. Formulated for natural vitality.</p>
+    </footer>
+
+    <script>
+        function togglePill(element) {
+            element.classList.toggle('selected');
+            const checkbox = element.querySelector('input');
+            checkbox.checked = !checkbox.checked;
+        }
+
+        function updatePricing() {
+            const select = document.getElementById('productSelect');
+            const priceDisplay = document.getElementById('displayPrice');
+            if(select.value.includes('₹499')) priceDisplay.innerText = '₹499';
+            else if(select.value.includes('₹699')) priceDisplay.innerText = '₹699';
+            else priceDisplay.innerText = '₹1099';
+        }
+
+        function handleOrderSubmission(event) {
+            event.preventDefault();
+
+            // Collect form details
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const address = document.getElementById('custAddress').value;
+            const product = document.getElementById('productSelect').value;
+            const transactionId = document.getElementById('paymentRef').value;
+
+            // Collect selected health goals
+            const selectedHealth = [];
+            document.querySelectorAll('.health-pill input:checked').forEach(cb => {
+                selectedHealth.push(cb.value);
+            });
+
+            const healthGoalsStr = selectedHealth.length > 0 ? selectedHealth.join(', ') : 'General Wellness';
+
+            // Construct WhatsApp Message payload
+            const whatsappMessage = `🌿 *NEW VEDORAH ORDER RECEIVED* 🌿\n\n` +
+                `👤 *Customer:* ${name}\n` +
+                `📞 *Phone:* ${phone}\n` +
+                `📦 *Product:* ${product}\n` +
+                `🎯 *Health Focus:* ${healthGoalsStr}\n` +
+                `📍 *Address:* ${address}\n` +
+                `💳 *UPI Ref ID:* ${transactionId}\n\n` +
+                `_Please verify payment in your bank account app and dispatch._`;
+
+            // 1. Send data to n8n Webhook Endpoint (Replace URL with your active n8n webhook URL)
+            const n8nWebhookUrl = 'https://your-n8n-instance.com/webhook/vedorah-order';
+            
+            fetch(n8nWebhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name, phone, address, product, healthGoals: healthGoalsStr, transactionId, timestamp: new Date().toISOString()
+                })
+            }).catch(err => console.log('Webhook logging note: ', err));
+
+            // 2. Direct Redirection to your WhatsApp Business Number: 9019797103
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/919019797103?text=${encodedMessage}`;
+
+            alert('Order captured successfully! Redirecting you to WhatsApp to complete confirmation with your payment reference.');
+            window.location.href = whatsappUrl;
+        }
+    </script>
+</body>
+</html>
+
